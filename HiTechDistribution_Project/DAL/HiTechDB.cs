@@ -10,10 +10,9 @@ namespace HiTechDistribution_Project.DAL
 {
     public class HiTechDB
     {
-        public static HiTech SearchUser(String uId) 
+        public static HiTech SearchUser(int uId) 
         {
             HiTech db = new HiTech();
-
             SqlConnection conn = UtilityDB.ConDB();
             SqlCommand cmdSearchUser = new SqlCommand();
             cmdSearchUser.Connection = conn;
