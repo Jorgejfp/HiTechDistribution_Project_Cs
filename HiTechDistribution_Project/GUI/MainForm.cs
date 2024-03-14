@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
 
 
 namespace HiTechDistribution_Project.GUI
@@ -48,25 +49,19 @@ namespace HiTechDistribution_Project.GUI
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure want to log out?", "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you really want to exit the application ? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes) 
             {
-                this.Hide();
-                this.Close(); 
-                FrmLogin frmLogin = new FrmLogin();
-                frmLogin.ShowDialog();
+                Application.Exit();
             }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure want to log out?", "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you really want to exit the application ? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                this.Hide();
-                this.Close();
-                FrmLogin frmLogin = new FrmLogin();
-                frmLogin.ShowDialog();
+                Application.Exit(); ;
             }
         }
 

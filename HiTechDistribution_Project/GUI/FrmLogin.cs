@@ -24,7 +24,7 @@ namespace HiTechDistribution_Project.GUI
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to quit this Application", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes) { this.Close(); }
+            if (result == DialogResult.Yes) { Application.Exit(); }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -35,12 +35,12 @@ namespace HiTechDistribution_Project.GUI
                 txtUserID.Focus();
                 return;
             }
-            string input = "";
+            int input = 0;
 
             HiTech db = new HiTech();
-            input = txtUserID.Text.Trim();
+            input = Convert.ToInt32(txtUserID.Text.Trim());
 
-            if (!Validator.IsValidUser(input))
+            if (!Validator.IsValidID(input))
             {
                 MessageBox.Show("Insert a Correct User ID is your Employee ID or You don't have access.", "Invalid User ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUserID.Clear();

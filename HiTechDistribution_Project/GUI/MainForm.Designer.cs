@@ -150,8 +150,8 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.exitToolStripMenuItem.Text = "&Sign Out";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // btnExit
@@ -163,7 +163,7 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(154, 45);
             this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "&Sign Out";
+            this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
