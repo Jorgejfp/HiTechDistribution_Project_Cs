@@ -47,8 +47,8 @@ namespace HiTechDistribution_Project.DAL
             if (reader.Read())
             {
                 db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                db.EmployeeFName = reader["FirstName"].ToString().Trim();
-                db.EmployeeLName = reader["LastName"].ToString().Trim();
+                db.EmployeeFName = reader["employeeFName"].ToString().Trim();
+                db.EmployeeLName = reader["employeeLName"].ToString().Trim();
                 db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
                 db.EmployeeEmail = reader["Email"].ToString().Trim();
                 db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
@@ -68,9 +68,9 @@ namespace HiTechDistribution_Project.DAL
             SqlConnection conn = UtilityDB.ConDB();
             SqlCommand cmdSearchUser = new SqlCommand();
             cmdSearchUser.Connection = conn;
-            cmdSearchUser.CommandText = "Select * from Employees " +
-                                        "where EmployeeID = @EmployeeID";
-            cmdSearchUser.Parameters.AddWithValue("@EmployeeID", uId);
+            cmdSearchUser.CommandText = "Select * from Users " +
+                                        "where UserID = @UserID";
+            cmdSearchUser.Parameters.AddWithValue("@UserID", uId);
             SqlDataReader reader = cmdSearchUser.ExecuteReader();
             if (reader.Read())
             {
@@ -101,11 +101,11 @@ namespace HiTechDistribution_Project.DAL
             SqlConnection conn = UtilityDB.ConDB();
             SqlCommand cmdInsert = new SqlCommand();
             cmdInsert.Connection = conn;
-            cmdInsert.CommandText = "INSERT INTO Employees (EmployeeId,FirstName,LastName,PhoneNumber,Email,JobID,StatusID) " +
-                                    "VALUES(@EmployeeId,@FirstName,@LastName,@PhoneNumber,@Email,@JobID,@StatusID)";
-            cmdInsert.Parameters.AddWithValue("@EmployeeId", employee.EmployeeID);
-            cmdInsert.Parameters.AddWithValue("@FirstName", employee.EmployeeFName);
-            cmdInsert.Parameters.AddWithValue("@LastName", employee.EmployeeLName);
+            cmdInsert.CommandText = "INSERT INTO Employees (EmployeeID,employeeFName,employeeLName,PhoneNumber,Email,JobID,StatusID) " +
+                                    "VALUES(@EmployeeID,@employeeFName,@employeeLName,@PhoneNumber,@Email,@JobID,@StatusID)";
+            cmdInsert.Parameters.AddWithValue("@EmployeeID", employee.EmployeeID);
+            cmdInsert.Parameters.AddWithValue("@employeeFName", employee.EmployeeFName);
+            cmdInsert.Parameters.AddWithValue("@employeeLName", employee.EmployeeLName);
             cmdInsert.Parameters.AddWithValue("@PhoneNumber", employee.EmployeePhonenumber);
             cmdInsert.Parameters.AddWithValue("@Email", employee.EmployeeEmail);
             cmdInsert.Parameters.AddWithValue("@JobID", employee.EmployeeJobID);
@@ -114,6 +114,30 @@ namespace HiTechDistribution_Project.DAL
             conn.Close();
         }
 
+
+        public static List<HiTech> GetAllRecords()
+        {
+            List<HiTech> listE = new List<HiTech>();
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdSelectAll = new SqlCommand("SELECT * FROM Employees", conn);
+            SqlDataReader reader = cmdSelectAll.ExecuteReader(); 
+            HiTech db;
+            while (reader.Read())
+            {
+                db = new HiTech();
+                db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                db.EmployeeFName = reader["FirstName"].ToString().Trim();
+                db.EmployeeLName = reader["LastName"].ToString().Trim();
+                db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
+                db.EmployeeEmail = reader["Email"].ToString().Trim();
+                db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
+                db.EmployeeStatusID = Convert.ToInt32(reader["StatusId"]);
+                listE.Add(db);
+
+            }
+            conn.Close();
+            return listE;
+        }
         public static List<HiTech> GetAllJobs()
         {
             List<HiTech> listJobs = new List<HiTech>();
@@ -157,24 +181,22 @@ namespace HiTechDistribution_Project.DAL
             SqlCommand cmdInsert = new SqlCommand();
             cmdInsert.Connection = conn;
             cmdInsert.CommandText = "UPDATE Employees " +
-                                    "    set FirstName=@FirstName," +
-                                    "        LastName=@LastName," +
+                                    "    set employeeFName=@employeeFName," +
+                                    "        employeeLName=@employeeLName," +
                                     "        PhoneNumber=@PhoneNumber," +
                                     "        Email=@Email," +
                                     "        JobID=@JobID," +
                                     "        StatusID=@StatusID" +
-                                    " WHERE  EmployeeID=@EmployeeId";
-            cmdInsert.Parameters.AddWithValue("@EmployeeId", empUpdated.EmployeeID);
-            cmdInsert.Parameters.AddWithValue("@FirstName", empUpdated.EmployeeFName);
-            cmdInsert.Parameters.AddWithValue("@LastName", empUpdated.EmployeeLName);
+                                    " WHERE  EmployeeID=@EmployeeID";
+            cmdInsert.Parameters.AddWithValue("@EmployeeID", empUpdated.EmployeeID);
+            cmdInsert.Parameters.AddWithValue("@employeeFName", empUpdated.EmployeeFName);
+            cmdInsert.Parameters.AddWithValue("@employeeLName", empUpdated.EmployeeLName);
             cmdInsert.Parameters.AddWithValue("@PhoneNumber", empUpdated.EmployeePhonenumber);
             cmdInsert.Parameters.AddWithValue("@Email", empUpdated.EmployeeEmail);
             cmdInsert.Parameters.AddWithValue("@JobID", empUpdated.EmployeeJobID);
             cmdInsert.Parameters.AddWithValue("@StatusID", empUpdated.EmployeeStatusID); 
             cmdInsert.ExecuteNonQuery();
             conn.Close();
-
-
         }
         public static void DeleteRecord(int eId)
         {
@@ -182,11 +204,112 @@ namespace HiTechDistribution_Project.DAL
             SqlCommand cmdDelete = new SqlCommand();
             cmdDelete.Connection = conn;
             cmdDelete.CommandText = "DELETE Employees " +
-                                     "WHERE EmployeeId=@EmployeeId";
-            cmdDelete.Parameters.AddWithValue("@EmployeeId", eId);
+                                     "WHERE EmployeeID=@EmployeeID";
+            cmdDelete.Parameters.AddWithValue("@EmployeeID", eId);
             cmdDelete.ExecuteNonQuery();
             conn.Close();
         }
+
+
+        public static HiTech SearchRecord(int eId)
+        {
+            HiTech db = new HiTech();
+
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdSearchById = new SqlCommand();
+            cmdSearchById.Connection = conn;
+            cmdSearchById.CommandText = "SELECT * FROM Employees " +
+                                        "WHERE EmployeeID=@EmployeeID";
+
+            cmdSearchById.Parameters.AddWithValue("@EmployeeID", eId);
+            SqlDataReader reader = cmdSearchById.ExecuteReader();
+            if (reader.Read()) // if found
+            {
+                db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                db.EmployeeFName = reader["FirstName"].ToString().Trim();
+                db.EmployeeLName = reader["LastName"].ToString().Trim();
+                db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
+                db.EmployeeEmail = reader["Email"].ToString().Trim();
+                db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
+                db.EmployeeStatusID = Convert.ToInt32(reader["StatusId"]);
+            }
+
+            else  // not found
+            {
+                db = null;
+            }
+            conn.Close();
+            return db;
+
+        }
+
+        public static List<HiTech> SearchRecord(string input) 
+        {
+            List<HiTech> listE = new List<HiTech>();
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdSearchByName = new SqlCommand();
+            cmdSearchByName.Connection = conn;
+            cmdSearchByName.CommandText = "SELECT * FROM Employees " +
+                                          "WHERE EmployeeFName = @EmployeeFName " +
+                                          " or EmployeeLName=@EmployeeLName";
+            cmdSearchByName.Parameters.AddWithValue("@EmployeeFName", input);
+            cmdSearchByName.Parameters.AddWithValue("@EmployeeLName", input);
+            SqlDataReader reader = cmdSearchByName.ExecuteReader(); 
+            HiTech db;
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    db = new HiTech();
+                    db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                    db.EmployeeFName = reader["employeeFName"].ToString().Trim();
+                    db.EmployeeLName = reader["employeeLName"].ToString().Trim();
+                    db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
+                    db.EmployeeEmail = reader["Email"].ToString().Trim();
+                    db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
+                    db.EmployeeStatusID = Convert.ToInt32(reader["StatusId"]);
+                    listE.Add(db);
+                }
+
+            }
+            conn.Close();
+            return listE;
+
+        }
+
+        public static List<HiTech> SearchRecord(string input1, string input2) 
+        {
+
+            List<HiTech> listE = new List<HiTech>();
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdSearchByName = new SqlCommand();
+            cmdSearchByName.Connection = conn;
+            cmdSearchByName.CommandText = "SELECT * FROM Employees " +
+                                          "WHERE EmployeeFName = @EmployeeFName " +
+                                          " and EmployeeLName=@EmployeeLName";
+            cmdSearchByName.Parameters.AddWithValue("@employeeFName", input1);
+            cmdSearchByName.Parameters.AddWithValue("@employeeLName", input2);
+            SqlDataReader reader = cmdSearchByName.ExecuteReader(); 
+            HiTech db;
+            while (reader.Read())
+            {
+                db = new HiTech();
+                db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                db.EmployeeFName = reader["employeeFName"].ToString().Trim();
+                db.EmployeeLName = reader["employeeLName"].ToString().Trim();
+                db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
+                db.EmployeeEmail = reader["Email"].ToString().Trim();
+                db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
+                db.EmployeeStatusID = Convert.ToInt32(reader["StatusId"]);
+                listE.Add(db);
+
+
+            }
+            conn.Close();
+            return listE;
+
+        }
+
 
     }
 }

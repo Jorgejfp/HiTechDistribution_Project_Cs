@@ -113,6 +113,28 @@ namespace HiTechDistribution_Project.BLL
         {
             return HiTechDB.GetAllStatus();
         }
+
+        public List<HiTech> GetEmployeeList()
+        {
+            return HiTechDB.GetAllRecords();
+        }
+
+        public HiTech SearchEmployee(int empId)
+        {
+            return HiTechDB.SearchRecord(empId);
+
+        }
+
+        public List<HiTech> SearchEmployee(string input)
+        {
+            return HiTechDB.SearchRecord(input);
+        }
+
+        public List<HiTech> SearchEmployee(string inputF, string inputL)
+        {
+            return HiTechDB.SearchRecord(inputF, inputL);
+        }
+
         public bool IsUniqueEmployeeId(int empId) => HiTechDB.IsUniqueId(empId);
         public void UpdateEmployee(HiTech emp) => HiTechDB.UpdateRecord(emp);
         public void DeleteEmployee(int empId) => HiTechDB.DeleteRecord(empId);

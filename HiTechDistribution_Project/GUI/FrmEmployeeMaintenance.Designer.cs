@@ -40,7 +40,6 @@
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.txtFname = new System.Windows.Forms.TextBox();
             this.txtLName = new System.Windows.Forms.TextBox();
-            this.txtPhoneNber = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.cmbJobID = new System.Windows.Forms.ComboBox();
             this.cmbStatusID = new System.Windows.Forms.ComboBox();
@@ -48,6 +47,7 @@
             this.btn_Update = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
+            this.txtPhoneNber = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -168,15 +168,6 @@
             this.txtLName.Size = new System.Drawing.Size(257, 26);
             this.txtLName.TabIndex = 17;
             // 
-            // txtPhoneNber
-            // 
-            this.txtPhoneNber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNber.Location = new System.Drawing.Point(157, 161);
-            this.txtPhoneNber.Name = "txtPhoneNber";
-            this.txtPhoneNber.Size = new System.Drawing.Size(185, 26);
-            this.txtPhoneNber.TabIndex = 18;
-            this.txtPhoneNber.TextChanged += new System.EventHandler(this.txtPhoneNber_TextChanged);
-            // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -255,12 +246,22 @@
             this.btn_Search.UseVisualStyleBackColor = false;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
+            // txtPhoneNber
+            // 
+            this.txtPhoneNber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtPhoneNber.Location = new System.Drawing.Point(157, 161);
+            this.txtPhoneNber.Mask = "(999) 000-0000";
+            this.txtPhoneNber.Name = "txtPhoneNber";
+            this.txtPhoneNber.Size = new System.Drawing.Size(185, 26);
+            this.txtPhoneNber.TabIndex = 26;
+            // 
             // FrmEmployeeMaintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(767, 399);
+            this.Controls.Add(this.txtPhoneNber);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Update);
@@ -268,7 +269,6 @@
             this.Controls.Add(this.cmbStatusID);
             this.Controls.Add(this.cmbJobID);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtPhoneNber);
             this.Controls.Add(this.txtLName);
             this.Controls.Add(this.txtFname);
             this.Controls.Add(this.txtEmployeeID);
@@ -304,7 +304,6 @@
         private System.Windows.Forms.TextBox txtEmployeeID;
         private System.Windows.Forms.TextBox txtFname;
         private System.Windows.Forms.TextBox txtLName;
-        private System.Windows.Forms.TextBox txtPhoneNber;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.ComboBox cmbJobID;
         private System.Windows.Forms.ComboBox cmbStatusID;
@@ -312,5 +311,6 @@
         private System.Windows.Forms.Button btn_Update;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.MaskedTextBox txtPhoneNber;
     }
 }

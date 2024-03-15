@@ -250,6 +250,7 @@ namespace HiTechDistribution_Project.GUI
             }
 
             HiTech empUpdated = new HiTech();
+            empUpdated.EmployeeID = Convert.ToInt32(txtEmployeeID.Text.Trim());
             empUpdated.EmployeeFName = txtFname.Text.Trim();
             empUpdated.EmployeeLName = txtLName.Text.Trim();
             empUpdated.EmployeePhonenumber = txtPhoneNber.Text.Trim();
