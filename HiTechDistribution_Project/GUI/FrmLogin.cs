@@ -47,7 +47,7 @@ namespace HiTechDistribution_Project.GUI
                 txtUserID.Focus();
                 return;
             }
-            db = db.SearchUser(input);
+            db = db.SearchUsers(input);
             if (db != null)
             {
                 if (txtPassword.Text == db.Password.ToString() && db.Status == 4)

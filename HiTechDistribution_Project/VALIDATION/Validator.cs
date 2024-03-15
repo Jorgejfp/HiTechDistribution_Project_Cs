@@ -31,7 +31,11 @@ namespace HiTechDistribution_Project.VALIDATION
 
             return true;
         }
-
+        public static bool IsValidPhoneNumber(string input)
+        {
+            string pattern = @"^\(\d{3}\)\s\d{3}-\d{4}$";
+            return Regex.IsMatch(input, pattern);
+        }
         public static bool IsValidEmail(string input)
         {
             if (!Regex.IsMatch(input, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))

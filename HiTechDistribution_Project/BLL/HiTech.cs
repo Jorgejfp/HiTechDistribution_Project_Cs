@@ -21,6 +21,11 @@ namespace HiTechDistribution_Project.BLL
         private string employeeEmail;
         private int employeeJobID;
         private int employeeStatusID;
+        private int jobID;
+        private string jobTitle;
+        private int statusID;
+        private string statusName;
+        
         //Users
         public int UserID { get => userID; set => userID = value; }
         public string Password { get => password; set => password = value; }
@@ -33,6 +38,10 @@ namespace HiTechDistribution_Project.BLL
         public string EmployeeEmail { get => employeeEmail; set => employeeEmail = value; }
         public int EmployeeJobID { get => employeeJobID; set => employeeJobID = value; }
         public int EmployeeStatusID { get => employeeStatusID; set => employeeStatusID = value; }
+        public int JobID { get => jobID; set => jobID = value; }
+        public string JobTitle { get => jobTitle; set => jobTitle = value; }
+        public int StatusID { get => statusID; set => statusID = value; }
+        public string StatusName { get => statusName; set => statusName = value; }
         public HiTech() 
         {
             userID = 0;
@@ -45,9 +54,26 @@ namespace HiTechDistribution_Project.BLL
             employeeEmail = string.Empty;
             employeeJobID= 0;
             employeeStatusID = 0;
+            jobID = 0;
+            jobTitle = string.Empty;
+            statusID = 0;
+            statusName = string.Empty;
         }
 
-        public HiTech(int userID, string password, int status, int employeeID, string employeeFName, string employeeLName, string employeePhoneNumber, string employeeEmail, int employeeJobID, int employeeStatusID)
+        public HiTech(int userID, 
+                      string password, 
+                      int status, 
+                      int employeeID, 
+                      string employeeFName, 
+                      string employeeLName, 
+                      string employeePhoneNumber, 
+                      string employeeEmail, 
+                      int employeeJobID, 
+                      int employeeStatusID,
+                      int jobID,
+                      string jobTitle,
+                      int statusID,
+                      string statusName)
         {
             this.userID = userID;
             this.password = password;
@@ -59,21 +85,36 @@ namespace HiTechDistribution_Project.BLL
             this.employeeEmail = employeeEmail;
             this.employeeJobID = employeeJobID;
             this.employeeStatusID = employeeStatusID;
+            this.jobID = jobID;
+            this.jobTitle = jobTitle;
+            this.statusID = statusID;
+            this.statusName = statusName;
         }
+        public HiTech SearchEmployees(int uId)
+        {
+            return HiTechDB.SearchEmployee(uId);
 
-        public HiTech SearchUser(int uId)
+        }
+        public HiTech SearchUsers(int uId)
         {
             return HiTechDB.SearchUser(uId);
-
         }
         public void SaveEmployee(HiTech emp)
         {
             HiTechDB.SaveRecord(emp);
 
         }
+        public List<HiTech> GetJobsList()
+        {
+            return HiTechDB.GetAllJobs();
+        }
 
+        public List<HiTech> GetStatusList()
+        {
+            return HiTechDB.GetAllStatus();
+        }
         public bool IsUniqueEmployeeId(int empId) => HiTechDB.IsUniqueId(empId);
-        //public void UpdateEmployee(Employee emp) => HiTechDB.UpdateRecord(emp);
-        //public void DeleteEmployee(int empId) => HiTechDB.DeleteRecord(empId);
+        public void UpdateEmployee(HiTech emp) => HiTechDB.UpdateRecord(emp);
+        public void DeleteEmployee(int empId) => HiTechDB.DeleteRecord(empId);
     }
 }

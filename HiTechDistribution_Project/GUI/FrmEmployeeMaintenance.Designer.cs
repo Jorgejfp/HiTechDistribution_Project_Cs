@@ -175,6 +175,7 @@
             this.txtPhoneNber.Name = "txtPhoneNber";
             this.txtPhoneNber.Size = new System.Drawing.Size(185, 26);
             this.txtPhoneNber.TabIndex = 18;
+            this.txtPhoneNber.TextChanged += new System.EventHandler(this.txtPhoneNber_TextChanged);
             // 
             // txtEmail
             // 
@@ -192,6 +193,7 @@
             this.cmbJobID.Name = "cmbJobID";
             this.cmbJobID.Size = new System.Drawing.Size(185, 28);
             this.cmbJobID.TabIndex = 20;
+            this.cmbJobID.SelectedIndexChanged += new System.EventHandler(this.cmbJobID_SelectedIndexChanged);
             // 
             // cmbStatusID
             // 
@@ -201,6 +203,7 @@
             this.cmbStatusID.Name = "cmbStatusID";
             this.cmbStatusID.Size = new System.Drawing.Size(164, 28);
             this.cmbStatusID.TabIndex = 21;
+            this.cmbStatusID.SelectedIndexChanged += new System.EventHandler(this.cmbStatusID_SelectedIndexChanged);
             // 
             // btn_Add
             // 
@@ -224,6 +227,7 @@
             this.btn_Update.TabIndex = 23;
             this.btn_Update.Text = "&Update";
             this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // btn_Delete
             // 
@@ -235,6 +239,7 @@
             this.btn_Delete.TabIndex = 24;
             this.btn_Delete.Text = "&Delete";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Search
             // 
@@ -248,6 +253,7 @@
             this.btn_Search.TabIndex = 25;
             this.btn_Search.Text = "&Search ID";
             this.btn_Search.UseVisualStyleBackColor = false;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // FrmEmployeeMaintenance
             // 
@@ -278,6 +284,7 @@
             this.Name = "FrmEmployeeMaintenance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Maintenance";
+            this.Load += new System.EventHandler(this.FrmEmployeeMaintenance_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
