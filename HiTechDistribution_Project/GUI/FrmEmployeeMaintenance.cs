@@ -27,7 +27,7 @@ namespace HiTechDistribution_Project.GUI
             DialogResult result = MessageBox.Show("Do you want return to the Main Form", "Exit Employee Maintenance Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                this.Hide();
+                this.Close();
                 MainForm frmMain = new MainForm();
                 frmMain.ShowDialog();
             }
@@ -115,13 +115,10 @@ namespace HiTechDistribution_Project.GUI
             txtEmployeeID.Focus();
         }
 
-        private void cmbJobID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
+    
         private void FrmEmployeeMaintenance_Load(object sender, EventArgs e)
         {
-                        
+
             HiTech jobs= new HiTech();
             List<HiTech> listJobs = jobs.GetJobsList();
             cmbJobID.Items.Clear();
@@ -139,11 +136,6 @@ namespace HiTechDistribution_Project.GUI
                 {
                     cmbStatusID.Items.Add(vstatus.StatusID.ToString() + "|" + vstatus.StatusName.ToString());
                 }            }
-        }
-
-        private void cmbStatusID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_Search_Click(object sender, EventArgs e)

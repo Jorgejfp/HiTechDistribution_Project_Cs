@@ -175,6 +175,7 @@
             this.buttonExit.TabIndex = 55;
             this.buttonExit.Text = "E&xit";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // buttonListAll
             // 

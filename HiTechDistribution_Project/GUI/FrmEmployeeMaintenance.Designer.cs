@@ -184,7 +184,6 @@
             this.cmbJobID.Name = "cmbJobID";
             this.cmbJobID.Size = new System.Drawing.Size(185, 28);
             this.cmbJobID.TabIndex = 20;
-            this.cmbJobID.SelectedIndexChanged += new System.EventHandler(this.cmbJobID_SelectedIndexChanged);
             // 
             // cmbStatusID
             // 
@@ -194,7 +193,6 @@
             this.cmbStatusID.Name = "cmbStatusID";
             this.cmbStatusID.Size = new System.Drawing.Size(164, 28);
             this.cmbStatusID.TabIndex = 21;
-            this.cmbStatusID.SelectedIndexChanged += new System.EventHandler(this.cmbStatusID_SelectedIndexChanged);
             // 
             // btn_Add
             // 

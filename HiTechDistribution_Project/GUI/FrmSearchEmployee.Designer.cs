@@ -40,17 +40,19 @@
             this.colEmployeeId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colJobID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colStatusID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonListAll = new System.Windows.Forms.Button();
-            this.colPhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtStatusID = new System.Windows.Forms.TextBox();
+            this.txtJobID = new System.Windows.Forms.TextBox();
             this.txtPhoneNber = new System.Windows.Forms.MaskedTextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtLName = new System.Windows.Forms.TextBox();
-            this.txtFname = new System.Windows.Forms.TextBox();
+            this.txtFName = new System.Windows.Forms.TextBox();
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,13 +61,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtStatusID = new System.Windows.Forms.TextBox();
-            this.txtJobID = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -166,16 +162,16 @@
             this.colJobID,
             this.colStatusID});
             this.listViewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewEmployee.ForeColor = System.Drawing.SystemColors.Info;
+            this.listViewEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
             this.listViewEmployee.GridLines = true;
             this.listViewEmployee.HideSelection = false;
             this.listViewEmployee.Location = new System.Drawing.Point(48, 437);
             this.listViewEmployee.Name = "listViewEmployee";
-            this.listViewEmployee.Size = new System.Drawing.Size(883, 143);
+            this.listViewEmployee.RightToLeftLayout = true;
+            this.listViewEmployee.Size = new System.Drawing.Size(883, 188);
             this.listViewEmployee.TabIndex = 36;
             this.listViewEmployee.UseCompatibleStateImageBehavior = false;
             this.listViewEmployee.View = System.Windows.Forms.View.Details;
-            this.listViewEmployee.SelectedIndexChanged += new System.EventHandler(this.listViewEmployee_SelectedIndexChanged);
             // 
             // colEmployeeId
             // 
@@ -194,6 +190,16 @@
             this.colLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.colLastName.Width = 128;
             // 
+            // colPhoneNumber
+            // 
+            this.colPhoneNumber.DisplayIndex = 5;
+            this.colPhoneNumber.Text = "Phone Number";
+            // 
+            // colEmail
+            // 
+            this.colEmail.DisplayIndex = 6;
+            this.colEmail.Text = "Email";
+            // 
             // colJobID
             // 
             this.colJobID.DisplayIndex = 3;
@@ -211,7 +217,7 @@
             // buttonExit
             // 
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExit.Location = new System.Drawing.Point(826, 607);
+            this.buttonExit.Location = new System.Drawing.Point(808, 642);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(123, 31);
             this.buttonExit.TabIndex = 35;
@@ -230,28 +236,14 @@
             this.buttonListAll.UseVisualStyleBackColor = true;
             this.buttonListAll.Click += new System.EventHandler(this.buttonListAll_Click);
             // 
-            // colPhoneNumber
-            // 
-            this.colPhoneNumber.DisplayIndex = 5;
-            this.colPhoneNumber.Text = "Phone Number";
-            // 
-            // colEmail
-            // 
-            this.colEmail.DisplayIndex = 6;
-            this.colEmail.Text = "Email";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtStatusID);
-            this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.txtJobID);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
             this.groupBox1.Controls.Add(this.txtPhoneNber);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.txtLName);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.txtFname);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtFName);
             this.groupBox1.Controls.Add(this.txtEmployeeID);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -267,12 +259,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information Employee ";
             // 
+            // txtStatusID
+            // 
+            this.txtStatusID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStatusID.Location = new System.Drawing.Point(522, 148);
+            this.txtStatusID.Name = "txtStatusID";
+            this.txtStatusID.ReadOnly = true;
+            this.txtStatusID.Size = new System.Drawing.Size(257, 26);
+            this.txtStatusID.TabIndex = 75;
+            // 
+            // txtJobID
+            // 
+            this.txtJobID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJobID.Location = new System.Drawing.Point(201, 154);
+            this.txtJobID.Name = "txtJobID";
+            this.txtJobID.ReadOnly = true;
+            this.txtJobID.Size = new System.Drawing.Size(185, 26);
+            this.txtJobID.TabIndex = 74;
+            // 
             // txtPhoneNber
             // 
             this.txtPhoneNber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtPhoneNber.Location = new System.Drawing.Point(201, 117);
+            this.txtPhoneNber.Location = new System.Drawing.Point(203, 117);
             this.txtPhoneNber.Mask = "(999) 000-0000";
             this.txtPhoneNber.Name = "txtPhoneNber";
+            this.txtPhoneNber.ReadOnly = true;
             this.txtPhoneNber.Size = new System.Drawing.Size(185, 26);
             this.txtPhoneNber.TabIndex = 73;
             // 
@@ -294,19 +305,21 @@
             this.txtLName.Size = new System.Drawing.Size(257, 26);
             this.txtLName.TabIndex = 68;
             // 
-            // txtFname
+            // txtFName
             // 
-            this.txtFname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFname.Location = new System.Drawing.Point(201, 81);
-            this.txtFname.Name = "txtFname";
-            this.txtFname.Size = new System.Drawing.Size(185, 26);
-            this.txtFname.TabIndex = 67;
+            this.txtFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFName.Location = new System.Drawing.Point(201, 78);
+            this.txtFName.Name = "txtFName";
+            this.txtFName.ReadOnly = true;
+            this.txtFName.Size = new System.Drawing.Size(185, 26);
+            this.txtFName.TabIndex = 67;
             // 
             // txtEmployeeID
             // 
             this.txtEmployeeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmployeeID.Location = new System.Drawing.Point(201, 43);
+            this.txtEmployeeID.Location = new System.Drawing.Point(203, 41);
             this.txtEmployeeID.Name = "txtEmployeeID";
+            this.txtEmployeeID.ReadOnly = true;
             this.txtEmployeeID.Size = new System.Drawing.Size(100, 26);
             this.txtEmployeeID.TabIndex = 66;
             // 
@@ -380,23 +393,6 @@
             this.label9.TabIndex = 59;
             this.label9.Text = "Employee ID:";
             // 
-            // txtStatusID
-            // 
-            this.txtStatusID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStatusID.Location = new System.Drawing.Point(522, 148);
-            this.txtStatusID.Name = "txtStatusID";
-            this.txtStatusID.ReadOnly = true;
-            this.txtStatusID.Size = new System.Drawing.Size(257, 26);
-            this.txtStatusID.TabIndex = 75;
-            // 
-            // txtJobID
-            // 
-            this.txtJobID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtJobID.Location = new System.Drawing.Point(203, 154);
-            this.txtJobID.Name = "txtJobID";
-            this.txtJobID.Size = new System.Drawing.Size(185, 26);
-            this.txtJobID.TabIndex = 74;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HiTechDistribution_Project.Properties.Resources.Logo;
@@ -407,48 +403,11 @@
             this.pictureBox1.TabIndex = 45;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(201, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 66;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(201, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(185, 26);
-            this.textBox2.TabIndex = 67;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.maskedTextBox1.Location = new System.Drawing.Point(201, 117);
-            this.maskedTextBox1.Mask = "(999) 000-0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.ReadOnly = true;
-            this.maskedTextBox1.Size = new System.Drawing.Size(185, 26);
-            this.maskedTextBox1.TabIndex = 73;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(203, 154);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(185, 26);
-            this.textBox3.TabIndex = 74;
-            // 
             // FrmSearchEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(987, 664);
+            this.ClientSize = new System.Drawing.Size(987, 685);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelLName);
@@ -463,6 +422,7 @@
             this.Controls.Add(this.buttonListAll);
             this.Controls.Add(this.label1);
             this.Name = "FrmSearchEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search and List Employees";
             this.Load += new System.EventHandler(this.FrmSearchEmployee_Load);
             this.groupBox1.ResumeLayout(false);
@@ -495,12 +455,8 @@
         private System.Windows.Forms.ColumnHeader colEmail;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtStatusID;
-        private System.Windows.Forms.TextBox txtJobID;
-        private System.Windows.Forms.MaskedTextBox txtPhoneNber;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtLName;
-        private System.Windows.Forms.TextBox txtFname;
-        private System.Windows.Forms.TextBox txtEmployeeID;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
@@ -509,9 +465,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtJobID;
+        private System.Windows.Forms.MaskedTextBox txtPhoneNber;
+        private System.Windows.Forms.TextBox txtFName;
+        private System.Windows.Forms.TextBox txtEmployeeID;
     }
 }

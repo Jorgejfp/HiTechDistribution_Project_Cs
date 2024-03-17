@@ -250,8 +250,7 @@ namespace HiTechDistribution_Project.DAL
             SqlCommand cmdSearchByName = new SqlCommand();
             cmdSearchByName.Connection = conn;
             cmdSearchByName.CommandText = "SELECT * FROM Employees " +
-                                          "WHERE EmployeeFName = @EmployeeFName " +
-                                          " or EmployeeLName=@EmployeeLName";
+                                          "WHERE FirstName = @EmployeeFName ";
             cmdSearchByName.Parameters.AddWithValue("@EmployeeFName", input);
             cmdSearchByName.Parameters.AddWithValue("@EmployeeLName", input);
             SqlDataReader reader = cmdSearchByName.ExecuteReader(); 
@@ -262,8 +261,8 @@ namespace HiTechDistribution_Project.DAL
                 {
                     db = new HiTech();
                     db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                    db.EmployeeFName = reader["employeeFName"].ToString().Trim();
-                    db.EmployeeLName = reader["employeeLName"].ToString().Trim();
+                    db.EmployeeFName = reader["FirstName"].ToString().Trim();
+                    db.EmployeeLName = reader["LastName"].ToString().Trim();
                     db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
                     db.EmployeeEmail = reader["Email"].ToString().Trim();
                     db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
@@ -276,7 +275,38 @@ namespace HiTechDistribution_Project.DAL
             return listE;
 
         }
+        public static List<HiTech> SearchRecordLN(string input)
+        {
+            List<HiTech> listE = new List<HiTech>();
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdSearchByName = new SqlCommand();
+            cmdSearchByName.Connection = conn;
+            cmdSearchByName.CommandText = "SELECT * FROM Employees " +
+                                          "WHERE LastName = @EmployeeLName ";
+            cmdSearchByName.Parameters.AddWithValue("@EmployeeFName", input);
+            cmdSearchByName.Parameters.AddWithValue("@EmployeeLName", input);
+            SqlDataReader reader = cmdSearchByName.ExecuteReader();
+            HiTech db;
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    db = new HiTech();
+                    db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                    db.EmployeeFName = reader["FirstName"].ToString().Trim();
+                    db.EmployeeLName = reader["LastName"].ToString().Trim();
+                    db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
+                    db.EmployeeEmail = reader["Email"].ToString().Trim();
+                    db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
+                    db.EmployeeStatusID = Convert.ToInt32(reader["StatusId"]);
+                    listE.Add(db);
+                }
 
+            }
+            conn.Close();
+            return listE;
+
+        }
         public static List<HiTech> SearchRecord(string input1, string input2) 
         {
 
@@ -285,8 +315,8 @@ namespace HiTechDistribution_Project.DAL
             SqlCommand cmdSearchByName = new SqlCommand();
             cmdSearchByName.Connection = conn;
             cmdSearchByName.CommandText = "SELECT * FROM Employees " +
-                                          "WHERE EmployeeFName = @EmployeeFName " +
-                                          " and EmployeeLName=@EmployeeLName";
+                                          "WHERE FirstName = @EmployeeFName " +
+                                          " and LastName = @EmployeeLName";
             cmdSearchByName.Parameters.AddWithValue("@employeeFName", input1);
             cmdSearchByName.Parameters.AddWithValue("@employeeLName", input2);
             SqlDataReader reader = cmdSearchByName.ExecuteReader(); 
@@ -295,8 +325,8 @@ namespace HiTechDistribution_Project.DAL
             {
                 db = new HiTech();
                 db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                db.EmployeeFName = reader["employeeFName"].ToString().Trim();
-                db.EmployeeLName = reader["employeeLName"].ToString().Trim();
+                db.EmployeeFName = reader["FirstName"].ToString().Trim();
+                db.EmployeeLName = reader["LastName"].ToString().Trim();
                 db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
                 db.EmployeeEmail = reader["Email"].ToString().Trim();
                 db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);

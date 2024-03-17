@@ -21,5 +21,10 @@ namespace HiTechDistribution_Project.GUI
         {
 
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

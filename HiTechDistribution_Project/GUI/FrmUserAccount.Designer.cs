@@ -214,6 +214,7 @@
             this.btnCancelar.TabIndex = 49;
             this.btnCancelar.Text = "&Exit";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label1
             // 

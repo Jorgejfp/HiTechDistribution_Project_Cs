@@ -21,5 +21,10 @@ namespace HiTechDistribution_Project.GUI
         {
 
         }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

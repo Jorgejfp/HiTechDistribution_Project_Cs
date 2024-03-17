@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
-
+using HiTechDistribution_Project.VALIDATION;
 
 namespace HiTechDistribution_Project.GUI
 {
@@ -21,28 +21,28 @@ namespace HiTechDistribution_Project.GUI
 
         private void userInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             FrmUserAccount frmUserAccount = new FrmUserAccount();
             frmUserAccount.ShowDialog();
         }
 
         private void employeeInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             FrmEmployeeMaintenance frmEmployee = new FrmEmployeeMaintenance();
             frmEmployee.ShowDialog();
         }
 
         private void employeeInformationToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             FrmSearchEmployee frmSearchEmployee = new FrmSearchEmployee();
             frmSearchEmployee.ShowDialog();
         }
 
         private void userInformationToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             FrmSearchUserAcc frmSearchUserAcc = new FrmSearchUserAcc();
             frmSearchUserAcc.ShowDialog();
         }
@@ -50,7 +50,7 @@ namespace HiTechDistribution_Project.GUI
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you really want to exit the application ? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes) 
+            if (result == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -69,6 +69,16 @@ namespace HiTechDistribution_Project.GUI
         {
             FrmAboutUS frmAb = new FrmAboutUS();
             frmAb.ShowDialog();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            var screenResolution = Screen.PrimaryScreen.Bounds.Size;
+            int screenWidth = screenResolution.Width;
+            int screenHeight = screenResolution.Height;
+
+
+            Validator.PositionButton(btnExit, screenWidth, screenHeight);
         }
     }
 }

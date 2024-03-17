@@ -95,6 +95,7 @@ namespace HiTechDistribution_Project.BLL
             return HiTechDB.SearchEmployee(uId);
 
         }
+       
         public HiTech SearchUsers(int uId)
         {
             return HiTechDB.SearchUser(uId);
@@ -129,7 +130,10 @@ namespace HiTechDistribution_Project.BLL
         {
             return HiTechDB.SearchRecord(input);
         }
-
+        public List<HiTech> SearchEmployeeLN(string input)
+        {
+            return HiTechDB.SearchRecordLN(input);
+        }
         public List<HiTech> SearchEmployee(string inputF, string inputL)
         {
             return HiTechDB.SearchRecord(inputF, inputL);

@@ -19,17 +19,22 @@ namespace HiTechDistribution_Project.GUI
             InitializeComponent();
         }
 
-        private void listViewEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        private void CleanText()
         {
-
+            txtEmployeeID.Text = string.Empty;
+            txtFName.Text = string.Empty;
+            txtLName.Text = string.Empty;
+            txtPhoneNber.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtJobID.Text = string.Empty;
+            txtStatusID.Text = string.Empty;
         }
-
         private void buttonExit_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want return to the Main Form", "Exit HiTech List and Search Form", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                this.Hide();
+                this.Close();
                 MainForm frmMain = new MainForm();
                 frmMain.ShowDialog();
             }
@@ -66,6 +71,7 @@ namespace HiTechDistribution_Project.GUI
             switch (indexSelected)
             {
                 case 0:
+                    CleanText();
                     labelMessage.Text = "Please enter Employee ID.";
                     textBoxInput.Clear();
                     textBoxInput.Focus();
@@ -73,6 +79,7 @@ namespace HiTechDistribution_Project.GUI
                     textBoxInput2.Visible = false;
                     break;
                 case 1:
+                    CleanText();
                     labelMessage.Text = "Please enter First Name.";
                     textBoxInput.Clear();
                     textBoxInput.Focus();
@@ -80,6 +87,7 @@ namespace HiTechDistribution_Project.GUI
                     textBoxInput2.Visible = false;
                     break;
                 case 2:
+                    CleanText();
                     labelMessage.Text = "Please enter Last Name.";
                     textBoxInput.Clear();
                     textBoxInput.Focus();
@@ -87,6 +95,7 @@ namespace HiTechDistribution_Project.GUI
                     textBoxInput2.Visible = false;
                     break;
                 case 3:
+                    CleanText();
                     labelMessage.Text = "Please enter First Name";
                     labelLName.Visible = true;
                     textBoxInput2.Visible = true;
@@ -123,7 +132,7 @@ namespace HiTechDistribution_Project.GUI
                     if (emp != null)
                     {
                         txtEmployeeID.Text = emp.EmployeeID.ToString();
-                        txtFname.Text = emp.EmployeeFName.ToString();
+                        txtFName.Text = emp.EmployeeFName.ToString();
                         txtLName.Text = emp.EmployeeLName.ToString();
                         txtPhoneNber.Text = emp.EmployeePhonenumber.ToString();
                         txtEmail.Text = emp.EmployeeEmail.ToString();
@@ -169,12 +178,12 @@ namespace HiTechDistribution_Project.GUI
                 case 2:
                     input = textBoxInput.Text.Trim();
                     List<HiTech> listEFN = new List<HiTech>();
-                    listEFN = emp.SearchEmployee(input);
+                    listEFN = emp.SearchEmployeeLN(input);
                     listViewEmployee.Items.Clear();
 
                     if (listEFN.Count == 0)
                     {
-                        MessageBox.Show("Employee not found!", "Invalid First Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Employee not found!", "Invalid Last Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         textBoxInput.Clear();
                         textBoxInput.Focus();
                         return;
