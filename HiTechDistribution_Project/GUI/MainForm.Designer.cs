@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.managmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmpInfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +41,7 @@
             this.orderClerksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,35 +49,35 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.managmentToolStripMenuItem,
+            this.managementToolStripMenuItem,
             this.inventoryToolStripMenuItem,
             this.salesToolStripMenuItem,
             this.orderClerksToolStripMenuItem,
             this.helpToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.LogOutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1159, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // managmentToolStripMenuItem
+            // managementToolStripMenuItem
             // 
-            this.managmentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.employeeInformationToolStripMenuItem,
+            this.managementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EmpInfToolStripMenuItem,
             this.userInformationToolStripMenuItem,
             this.toolStripMenuItem1,
             this.searchToolStripMenuItem});
-            this.managmentToolStripMenuItem.Name = "managmentToolStripMenuItem";
-            this.managmentToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.managmentToolStripMenuItem.Text = "&Managment";
+            this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.managementToolStripMenuItem.Text = "&Managment";
             // 
-            // employeeInformationToolStripMenuItem
+            // EmpInfToolStripMenuItem
             // 
-            this.employeeInformationToolStripMenuItem.Name = "employeeInformationToolStripMenuItem";
-            this.employeeInformationToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.employeeInformationToolStripMenuItem.Text = "&Employee Information";
-            this.employeeInformationToolStripMenuItem.Click += new System.EventHandler(this.employeeInformationToolStripMenuItem_Click);
+            this.EmpInfToolStripMenuItem.Name = "EmpInfToolStripMenuItem";
+            this.EmpInfToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.EmpInfToolStripMenuItem.Text = "&Employee Information";
+            this.EmpInfToolStripMenuItem.Click += new System.EventHandler(this.employeeInformationToolStripMenuItem_Click);
             // 
             // userInformationToolStripMenuItem
             // 
@@ -103,16 +103,12 @@
             // employeeInformationToolStripMenuItem1
             // 
             this.employeeInformationToolStripMenuItem1.Name = "employeeInformationToolStripMenuItem1";
-            this.employeeInformationToolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
-            this.employeeInformationToolStripMenuItem1.Text = "&Employee Information";
-            this.employeeInformationToolStripMenuItem1.Click += new System.EventHandler(this.employeeInformationToolStripMenuItem1_Click);
+            this.employeeInformationToolStripMenuItem1.Size = new System.Drawing.Size(67, 22);
             // 
             // userInformationToolStripMenuItem1
             // 
             this.userInformationToolStripMenuItem1.Name = "userInformationToolStripMenuItem1";
-            this.userInformationToolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
-            this.userInformationToolStripMenuItem1.Text = "&User Information";
-            this.userInformationToolStripMenuItem1.Click += new System.EventHandler(this.userInformationToolStripMenuItem1_Click);
+            this.userInformationToolStripMenuItem1.Size = new System.Drawing.Size(67, 22);
             // 
             // inventoryToolStripMenuItem
             // 
@@ -147,19 +143,19 @@
             this.aboutUSToolStripMenuItem.Text = "&About US";
             this.aboutUSToolStripMenuItem.Click += new System.EventHandler(this.aboutUSToolStripMenuItem_Click);
             // 
-            // exitToolStripMenuItem
+            // LogOutToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.exitToolStripMenuItem.Text = "&Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem";
+            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.LogOutToolStripMenuItem.Text = "&LogOut";
+            this.LogOutToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(0, 69);
+            this.btnExit.Location = new System.Drawing.Point(957, 27);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(154, 45);
             this.btnExit.TabIndex = 1;
@@ -195,9 +191,9 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem managmentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userInformationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem employeeInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EmpInfToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderClerksToolStripMenuItem;
@@ -207,7 +203,7 @@
         private System.Windows.Forms.ToolStripMenuItem userInformationToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem employeeInformationToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutUSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LogOutToolStripMenuItem;
         private System.Windows.Forms.Button btnExit;
     }
 }

@@ -24,7 +24,10 @@ namespace HiTechDistribution_Project.DAL
             {
                 db.UserID = Convert.ToInt32(reader["UserID"]);
                 db.Password = reader["Password"].ToString().Trim();
+                db.DateCreated = Convert.ToDateTime(reader["DateCreated"]);
+                db.DateUpdated = Convert.ToDateTime(reader["DateUpdated"]);
                 db.Status = Convert.ToInt32(reader["StatusID"]);
+                db.RolId = Convert.ToInt32(reader["RolID"]);
             }
             else
             {
@@ -47,8 +50,8 @@ namespace HiTechDistribution_Project.DAL
             if (reader.Read())
             {
                 db.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                db.EmployeeFName = reader["employeeFName"].ToString().Trim();
-                db.EmployeeLName = reader["employeeLName"].ToString().Trim();
+                db.EmployeeFName = reader["FirstName"].ToString().Trim();
+                db.EmployeeLName = reader["LastName"].ToString().Trim();
                 db.EmployeePhonenumber = reader["PhoneNumber"].ToString().Trim();
                 db.EmployeeEmail = reader["Email"].ToString().Trim();
                 db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
@@ -68,15 +71,18 @@ namespace HiTechDistribution_Project.DAL
             SqlConnection conn = UtilityDB.ConDB();
             SqlCommand cmdSearchUser = new SqlCommand();
             cmdSearchUser.Connection = conn;
-            cmdSearchUser.CommandText = "Select * from Users " +
-                                        "where UserID = @UserID";
+            cmdSearchUser.CommandText = "SELECT * FROM UserAccounts"+
+                "Where UserId = @UserID";
             cmdSearchUser.Parameters.AddWithValue("@UserID", uId);
             SqlDataReader reader = cmdSearchUser.ExecuteReader();
             if (reader.Read())
             {
-                db.UserID = Convert.ToInt32(reader["UserID"]);
+                db.UserID = Convert.ToInt32(reader["EmployeeID"]);
                 db.Password = reader["Password"].ToString().Trim();
-                db.Status = Convert.ToInt32(reader["StatusID"]);
+                db.DateCreated = Convert.ToDateTime(reader["DateCreated"]);
+                db.DateUpdated = Convert.ToDateTime(reader["DateUpdated"]);
+                db.StatusID = Convert.ToInt32(reader["StatusID"]);
+                db.RolId = Convert.ToInt32(reader["RolID"]);
             }
             else
             {
@@ -96,7 +102,7 @@ namespace HiTechDistribution_Project.DAL
             return true;
         }
 
-        public static void SaveRecord(HiTech employee)
+        public static void SaveRecordEmployee(HiTech employee)
         {
             SqlConnection conn = UtilityDB.ConDB();
             SqlCommand cmdInsert = new SqlCommand();
@@ -113,7 +119,22 @@ namespace HiTechDistribution_Project.DAL
             cmdInsert.ExecuteNonQuery();
             conn.Close();
         }
-
+        public static void SaveRecordUser(HiTech user)
+        {
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdInsert = new SqlCommand();
+            cmdInsert.Connection = conn;
+            cmdInsert.CommandText = "INSERT INTO UserAccounts (UserID,Password,DateCreated,DateUpdated,StatusID,RolID) " +
+                                    "VALUES(@EmployeeID,@Password,@DateCreated,@DateUpdated,@StatusID,@RolID)";
+            cmdInsert.Parameters.AddWithValue("@EmployeeID", user.UserID);
+            cmdInsert.Parameters.AddWithValue("@Password", user.Password);
+            cmdInsert.Parameters.AddWithValue("@DateCreated", user.DateCreated);
+            cmdInsert.Parameters.AddWithValue("@DateUpdated", user.DateUpdated);
+            cmdInsert.Parameters.AddWithValue("@RolID", user.RolId);
+            cmdInsert.Parameters.AddWithValue("@StatusID", user.StatusID);
+            cmdInsert.ExecuteNonQuery();
+            conn.Close();
+        }
 
         public static List<HiTech> GetAllRecords()
         {
@@ -175,7 +196,7 @@ namespace HiTechDistribution_Project.DAL
             return listStatus;
         }
 
-        public static void UpdateRecord(HiTech empUpdated)
+        public static void UpdateRecordEmployee(HiTech empUpdated)
         {
             SqlConnection conn = UtilityDB.ConDB();
             SqlCommand cmdInsert = new SqlCommand();
@@ -198,7 +219,7 @@ namespace HiTechDistribution_Project.DAL
             cmdInsert.ExecuteNonQuery();
             conn.Close();
         }
-        public static void DeleteRecord(int eId)
+        public static void DeleteRecordEmployee(int eId)
         {
             SqlConnection conn = UtilityDB.ConDB();
             SqlCommand cmdDelete = new SqlCommand();
@@ -210,7 +231,38 @@ namespace HiTechDistribution_Project.DAL
             conn.Close();
         }
 
-
+        public static void UpdateRecordUser(HiTech userUpdated)
+        {
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdInsert = new SqlCommand();
+            cmdInsert.Connection = conn;
+            cmdInsert.CommandText = "UPDATE UserAccounts " +
+                                    "    set Password=@Password," +
+                                    "        DateCreated=@DateCreated," +
+                                    "        DateUpdated=@DateUpdated," +
+                                    "        RolId=@RolId," +
+                                    "        StatusID=@StatusID" +
+                                    " WHERE  UserID=@EmployeeID";
+            cmdInsert.Parameters.AddWithValue("@EmployeeID", userUpdated.UserID);
+            cmdInsert.Parameters.AddWithValue("@Password", userUpdated.Password);
+            cmdInsert.Parameters.AddWithValue("@DateCreated", userUpdated.DateCreated);
+            cmdInsert.Parameters.AddWithValue("@DateUpdated", userUpdated.DateUpdated);
+            cmdInsert.Parameters.AddWithValue("@StatusID", userUpdated.StatusID);
+            cmdInsert.Parameters.AddWithValue("@RolID", userUpdated.RolId);
+            cmdInsert.ExecuteNonQuery();
+            conn.Close();
+        }
+        public static void DeleteRecordUser(int eId)
+        {
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdDelete = new SqlCommand();
+            cmdDelete.Connection = conn;
+            cmdDelete.CommandText = "DELETE UserAccounts " +
+                                     "WHERE UserID=@EmployeeID";
+            cmdDelete.Parameters.AddWithValue("@EmployeeID", eId);
+            cmdDelete.ExecuteNonQuery();
+            conn.Close();
+        }
         public static HiTech SearchRecord(int eId)
         {
             HiTech db = new HiTech();

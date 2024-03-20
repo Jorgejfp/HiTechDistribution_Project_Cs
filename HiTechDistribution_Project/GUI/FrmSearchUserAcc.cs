@@ -26,5 +26,10 @@ namespace HiTechDistribution_Project.GUI
         {
 
         }
+
+        private void buttonSearchEmployee_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

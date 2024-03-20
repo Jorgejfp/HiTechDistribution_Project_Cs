@@ -135,7 +135,8 @@ namespace HiTechDistribution_Project.GUI
                 if (Convert.ToInt32(vstatus.StatusID) >= 6 && Convert.ToInt32(vstatus.StatusID) <= 8)
                 {
                     cmbStatusID.Items.Add(vstatus.StatusID.ToString() + "|" + vstatus.StatusName.ToString());
-                }            }
+                }       
+            }
         }
 
         private void btn_Search_Click(object sender, EventArgs e)

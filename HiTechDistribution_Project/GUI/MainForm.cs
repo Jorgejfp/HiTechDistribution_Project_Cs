@@ -26,26 +26,7 @@ namespace HiTechDistribution_Project.GUI
             frmUserAccount.ShowDialog();
         }
 
-        private void employeeInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            FrmEmployeeMaintenance frmEmployee = new FrmEmployeeMaintenance();
-            frmEmployee.ShowDialog();
-        }
 
-        private void employeeInformationToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            FrmSearchEmployee frmSearchEmployee = new FrmSearchEmployee();
-            frmSearchEmployee.ShowDialog();
-        }
-
-        private void userInformationToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            FrmSearchUserAcc frmSearchUserAcc = new FrmSearchUserAcc();
-            frmSearchUserAcc.ShowDialog();
-        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
