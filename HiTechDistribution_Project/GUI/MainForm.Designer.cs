@@ -76,8 +76,8 @@
             // 
             this.EmpInfToolStripMenuItem.Name = "EmpInfToolStripMenuItem";
             this.EmpInfToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.EmpInfToolStripMenuItem.Text = "&Employee Information";
-            this.EmpInfToolStripMenuItem.Click += new System.EventHandler(this.employeeInformationToolStripMenuItem_Click);
+            this.EmpInfToolStripMenuItem.Text = "&Management";
+            this.EmpInfToolStripMenuItem.Click += new System.EventHandler(this.EmpInfToolStripMenuItem_Click);
             // 
             // userInformationToolStripMenuItem
             // 

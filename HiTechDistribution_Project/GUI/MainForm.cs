@@ -61,5 +61,12 @@ namespace HiTechDistribution_Project.GUI
 
             Validator.PositionButton(btnExit, screenWidth, screenHeight);
         }
+
+        private void EmpInfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //this.Hide();
+            FrmEmployeeMaintenance frmEmployee = new FrmEmployeeMaintenance();
+            frmEmployee.ShowDialog();
+        }
     }
 }

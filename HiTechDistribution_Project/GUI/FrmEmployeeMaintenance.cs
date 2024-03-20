@@ -165,6 +165,7 @@ namespace HiTechDistribution_Project.GUI
                 txtEmail.Text = emp.EmployeeEmail.ToString();
                 cmbJobID.Text = emp.EmployeeJobID.ToString();
                 cmbStatusID.Text = emp.EmployeeStatusID.ToString();
+                return;
             }
             else
             {
