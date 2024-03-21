@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HiTechDistribution_Project.BLL;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace HiTechDistribution_Project.DAL
 {
@@ -16,18 +17,28 @@ namespace HiTechDistribution_Project.DAL
             SqlConnection conn = UtilityDB.ConDB();
             SqlCommand cmdSearchUser = new SqlCommand();
             cmdSearchUser.Connection = conn;
-            cmdSearchUser.CommandText = "Select * from UserAccounts " +
+            cmdSearchUser.CommandText = "SELECT u.UserID, e.FirstName, e.LastName, e.PhoneNumber, e.Email, e.JobID, e.StatusID," +
+                                        "u.DateCreated, u.DateUpdated, u.StatusID as uStatusID, u.RolId , u.Password " +
+                                        "FROM UserAccounts u " +
+                                        "JOIN Employees e ON u.UserID = e.EmployeeID " +
                                         "where UserID = @UserID";
             cmdSearchUser.Parameters.AddWithValue("@UserID", uId);
-            SqlDataReader reader = cmdSearchUser.ExecuteReader();
-            if (reader.Read())
+            SqlDataReader readerUser = cmdSearchUser.ExecuteReader();
+            if (readerUser.Read())
             {
-                db.UserID = Convert.ToInt32(reader["UserID"]);
-                db.Password = reader["Password"].ToString().Trim();
-                db.DateCreated = Convert.ToDateTime(reader["DateCreated"]);
-                db.DateUpdated = Convert.ToDateTime(reader["DateUpdated"]);
-                db.Status = Convert.ToInt32(reader["StatusID"]);
-                db.RolId = Convert.ToInt32(reader["RolID"]);
+                db.UserID = Convert.ToInt32(readerUser["UserID"]);
+                db.EmployeeFName = readerUser["FirstName"].ToString().Trim();
+                db.EmployeeLName = readerUser["LastName"].ToString().Trim();
+                db.EmployeePhonenumber = readerUser["PhoneNumber"].ToString().Trim();
+                db.EmployeeEmail = readerUser["Email"].ToString().Trim();
+                db.EmployeeJobID = Convert.ToInt32(readerUser["JobId"]);
+                db.EmployeeStatusID = Convert.ToInt32(readerUser["StatusId"]);
+                db.DateCreated = Convert.ToDateTime(readerUser["DateCreated"]);
+                db.DateUpdated = Convert.ToDateTime(readerUser["DateUpdated"]);
+                db.StatusID = Convert.ToInt32(readerUser["uStatusID"]);
+                db.RolId = Convert.ToInt32(readerUser["RolId"]);
+                db.Password = readerUser["Password"].ToString();
+
             }
             else
             {
@@ -153,6 +164,39 @@ namespace HiTechDistribution_Project.DAL
                 db.EmployeeEmail = reader["Email"].ToString().Trim();
                 db.EmployeeJobID = Convert.ToInt32(reader["JobId"]);
                 db.EmployeeStatusID = Convert.ToInt32(reader["StatusId"]);
+                listE.Add(db);
+
+            }
+            conn.Close();
+            return listE;
+        }
+
+        public static List<HiTech> GetAllUserRecords()
+        {
+
+            List<HiTech> listE = new List<HiTech>();
+            SqlConnection conn = UtilityDB.ConDB();
+            SqlCommand cmdSelectAll = new SqlCommand("SELECT u.UserID, e.FirstName, e.LastName, e.PhoneNumber, e.Email, e.JobID, e.StatusID," +
+                                                            "u.DateCreated, u.DateUpdated, u.StatusID, u.RolId , u.Password " +
+                                                            "FROM UserAccounts u " +
+                                                            "JOIN Employees e ON u.UserID = e.EmployeeID", conn);
+            SqlDataReader readerUser = cmdSelectAll.ExecuteReader();
+            HiTech db;
+            while (readerUser.Read())
+            {
+                db = new HiTech();
+                db.UserID = Convert.ToInt32(readerUser["UserID"]);
+                db.EmployeeFName = readerUser["FirstName"].ToString().Trim();
+                db.EmployeeLName = readerUser["LastName"].ToString().Trim();
+                db.EmployeePhonenumber = readerUser["PhoneNumber"].ToString().Trim();
+                db.EmployeeEmail = readerUser["Email"].ToString().Trim();
+                db.EmployeeJobID = Convert.ToInt32(readerUser["JobId"]);
+                db.EmployeeStatusID = Convert.ToInt32(readerUser["StatusId"]);
+                db.DateCreated = Convert.ToDateTime(readerUser["DateCreated"]);
+                db.DateUpdated = Convert.ToDateTime(readerUser["DateUpdated"]);
+                db.StatusID = Convert.ToInt32(readerUser["StatusID"]);
+                db.RolId = Convert.ToInt32(readerUser["RolId"]);
+                db.Password = readerUser["Password"].ToString();
                 listE.Add(db);
 
             }

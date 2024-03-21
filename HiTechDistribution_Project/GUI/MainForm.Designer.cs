@@ -1,4 +1,6 @@
-﻿namespace HiTechDistribution_Project.GUI
+﻿using System;
+
+namespace HiTechDistribution_Project.GUI
 {
     partial class MainForm
     {
@@ -34,15 +36,13 @@
             this.userInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeInformationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.userInformationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderClerksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExit = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +67,8 @@
             this.EmpInfToolStripMenuItem,
             this.userInformationToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.searchToolStripMenuItem});
+            this.searchToolStripMenuItem,
+            this.searchUserToolStripMenuItem});
             this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
             this.managementToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.managementToolStripMenuItem.Text = "&Managment";
@@ -76,7 +77,7 @@
             // 
             this.EmpInfToolStripMenuItem.Name = "EmpInfToolStripMenuItem";
             this.EmpInfToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.EmpInfToolStripMenuItem.Text = "&Management";
+            this.EmpInfToolStripMenuItem.Text = "Employee Information";
             this.EmpInfToolStripMenuItem.Click += new System.EventHandler(this.EmpInfToolStripMenuItem_Click);
             // 
             // userInformationToolStripMenuItem
@@ -93,22 +94,17 @@
             // 
             // searchToolStripMenuItem
             // 
-            this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.employeeInformationToolStripMenuItem1,
-            this.userInformationToolStripMenuItem1});
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.searchToolStripMenuItem.Text = "&Search";
+            this.searchToolStripMenuItem.Text = "Search Employee";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
-            // employeeInformationToolStripMenuItem1
+            // searchUserToolStripMenuItem
             // 
-            this.employeeInformationToolStripMenuItem1.Name = "employeeInformationToolStripMenuItem1";
-            this.employeeInformationToolStripMenuItem1.Size = new System.Drawing.Size(67, 22);
-            // 
-            // userInformationToolStripMenuItem1
-            // 
-            this.userInformationToolStripMenuItem1.Name = "userInformationToolStripMenuItem1";
-            this.userInformationToolStripMenuItem1.Size = new System.Drawing.Size(67, 22);
+            this.searchUserToolStripMenuItem.Name = "searchUserToolStripMenuItem";
+            this.searchUserToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.searchUserToolStripMenuItem.Text = "Search User";
+            this.searchUserToolStripMenuItem.Click += new System.EventHandler(this.searchUserToolStripMenuItem_Click);
             // 
             // inventoryToolStripMenuItem
             // 
@@ -146,22 +142,9 @@
             // LogOutToolStripMenuItem
             // 
             this.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem";
-            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.LogOutToolStripMenuItem.Text = "&LogOut";
+            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.LogOutToolStripMenuItem.Text = "Exit";
             this.LogOutToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(957, 27);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(154, 45);
-            this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "&Exit";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // MainForm
             // 
@@ -169,9 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::HiTechDistribution_Project.Properties.Resources.Logo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(1159, 677);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -180,7 +161,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hi-Tech Distribution Inc. - Order Managment System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -200,10 +180,10 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem userInformationToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem employeeInformationToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutUSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem LogOutToolStripMenuItem;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ToolStripMenuItem searchUserToolStripMenuItem;
+
+        //public EventHandler MainForm_Load { get; private set; }
     }
 }

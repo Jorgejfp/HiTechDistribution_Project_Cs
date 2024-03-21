@@ -56,7 +56,8 @@ namespace HiTechDistribution_Project.GUI
                 item.SubItems.Add(emp.EmployeeStatusID.ToString());
                 listViewEmployee.Items.Add(item);
             }
-
+            listViewEmployee.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewEmployee.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void FrmSearchEmployee_Load(object sender, EventArgs e)

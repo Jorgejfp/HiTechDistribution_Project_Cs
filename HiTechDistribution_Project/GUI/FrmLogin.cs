@@ -50,7 +50,7 @@ namespace HiTechDistribution_Project.GUI
             db = db.SearchUsers(input);
             if (db != null)
             {
-                if (txtPassword.Text == db.Password.ToString() && db.Status == 4)
+                if (txtPassword.Text == db.Password.ToString() && db.StatusID == 4)
                 {
                     this.Hide();
                     MainForm frmMain = new MainForm();

@@ -244,5 +244,25 @@ namespace HiTechDistribution_Project.GUI
             txtConfirmationPassword.Clear();
             txtEmployeeID.Focus();
         }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            HiTech userDeleted = new HiTech();
+            var answer = MessageBox.Show("Do you really want to delete this User?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (answer == DialogResult.Yes)
+            {
+                userDeleted.DeleteEmployee(Convert.ToInt32(txtEmployeeID.Text.Trim()));
+                MessageBox.Show("Employee data has been deleted successfully.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            txtEmployeeID.Clear();
+            txtFname.Clear();
+            txtLName.Clear();
+            cmbStatusID.Text = "";
+            txtJobID.Text = "";
+            txtPassword.Clear();
+            txtConfirmationPassword.Clear();
+            txtEmployeeID.Focus();
+        }
     }
 }

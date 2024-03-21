@@ -139,7 +139,10 @@ namespace HiTechDistribution_Project.BLL
         {
             return HiTechDB.GetAllRecords();
         }
-
+        public List<HiTech> GetUserList()
+        {
+            return HiTechDB.GetAllUserRecords();
+        }
         public HiTech SearchEmployee(int empId)
         {
             return HiTechDB.SearchRecord(empId);

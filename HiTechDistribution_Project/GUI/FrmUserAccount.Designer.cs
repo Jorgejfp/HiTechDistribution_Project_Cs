@@ -62,6 +62,7 @@
             this.btn_Delete.TabIndex = 62;
             this.btn_Delete.Text = "&Delete User Account";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Update
             // 
